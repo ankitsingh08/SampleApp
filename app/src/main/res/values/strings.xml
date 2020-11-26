@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SampleApp</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="enter_restaurant_name">enter restaurant name</string>
+    <string name="text_select_filter">Select Filter</string>
+
+    <string-array name="filter_options_array">
+        <item>Best Match</item>
+        <item>Newest</item>
+        <item>Rating Average</item>
+        <item>Distance</item>
+        <item>Popularity</item>
+        <item>Average Product Price</item>
+        <item>Delivery Cost</item>
+        <item>Minimum Cost</item>
+    </string-array>
+</resources>
