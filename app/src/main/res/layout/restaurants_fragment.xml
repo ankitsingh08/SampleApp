@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -14,42 +12,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/search"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        app:queryHint="@string/enter_restaurant_name"-->
-<!--        app:iconifiedByDefault="false"-->
-<!--        android:layout_height="@dimen/dp70"/>-->
-
-    <TextView
-        android:id="@+id/tvSelectFilter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/text_select_filter"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/filterSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="16dp"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSelectFilter" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        app:queryHint="@string/enter_restaurant_name"
+        app:iconifiedByDefault="false"
+        android:layout_height="@dimen/dp70"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_restaurants"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp16"
+        android:layout_marginBottom="@dimen/dp16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

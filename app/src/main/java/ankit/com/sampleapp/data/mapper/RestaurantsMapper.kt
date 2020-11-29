@@ -7,7 +7,7 @@ import ankit.com.sampleapp.domain.model.RestaurantDomainModel
 /**
  * Created by AnkitSingh on 11/26/20.
  */
-fun List<Restaurant>.toRestaurantsList(): List<RestaurantDomainModel> {
+inline fun List<Restaurant>.toRestaurantsDomainList(): List<RestaurantDomainModel> {
     return this.map {
         it.toDomainModel()
     }

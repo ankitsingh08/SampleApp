@@ -12,8 +12,8 @@ class RestaurantsDataSource @Inject constructor(
     private val restaurantsInformationAPI: RestaurantsInformationAPI,
     private val restaurantsInformationAPIToEntityMapper: RestaurantsInformationAPIToEntityMapper) {
 
-    suspend fun fetchRestaurantsInformation() : List<Restaurant> {
+    fun fetchRestaurantsInformation() : List<Restaurant> {
         return restaurantsInformationAPIToEntityMapper.transformTeamEntityCollection(
-            restaurantsInformationAPI.fetchRestaurantsInformation()).restaurants
+            restaurantsInformationAPI.fetchRestaurantsInformation()).restaurants.sortedBy { it.status }
     }
 }

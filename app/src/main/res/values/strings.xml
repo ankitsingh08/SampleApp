@@ -3,15 +3,12 @@
     <string name="restaurants">Restaurants</string>
     <string name="enter_restaurant_name">enter restaurant name</string>
     <string name="text_select_filter">Select Filter</string>
-
-    <string-array name="filter_options_array">
-        <item>Best Match</item>
-        <item>Newest</item>
-        <item>Rating Average</item>
-        <item>Distance</item>
-        <item>Popularity</item>
-        <item>Average Product Price</item>
-        <item>Delivery Cost</item>
-        <item>Minimum Cost</item>
-    </string-array>
+    <string name="best_match">Best Match</string>
+    <string name="newest">Newest</string>
+    <string name="rating_average">Rating Average</string>
+    <string name="distance">Distance</string>
+    <string name="popularity">Popularity</string>
+    <string name="average_product_price">Average Product Price</string>
+    <string name="delivery_cost">Delivery Cost</string>
+    <string name="min_cost">Min Cost</string>
 </resources>

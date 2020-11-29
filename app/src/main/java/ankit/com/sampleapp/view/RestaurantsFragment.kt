@@ -2,12 +2,21 @@ package ankit.com.sampleapp.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
+import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ankit.com.sampleapp.R
 import ankit.com.sampleapp.databinding.RestaurantsFragmentBinding
+import ankit.com.sampleapp.util.Constants.SORT_BY_AVERAGE_PRODUCT_PRICE
+import ankit.com.sampleapp.util.Constants.SORT_BY_BEST_MATCH
+import ankit.com.sampleapp.util.Constants.SORT_BY_DELIVERY_COST
+import ankit.com.sampleapp.util.Constants.SORT_BY_DISTANCE
+import ankit.com.sampleapp.util.Constants.SORT_BY_MIN_COST
+import ankit.com.sampleapp.util.Constants.SORT_BY_NEWEST
+import ankit.com.sampleapp.util.Constants.SORT_BY_POPULARITY
+import ankit.com.sampleapp.util.Constants.SORT_BY_RATING_AVERAGE
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -15,7 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
  * Created by AnkitSingh on 11/25/20.
  */
 @AndroidEntryPoint
-class RestaurantsFragment: Fragment() {
+class RestaurantsFragment : Fragment(), PopupMenu.OnMenuItemClickListener,
+    RestaurantsAdapter.OnClickHandler {
 
     private lateinit var binding: RestaurantsFragmentBinding
 
@@ -32,32 +42,28 @@ class RestaurantsFragment: Fragment() {
     }
 
     private fun initializeUI() {
-        setUpFilterSpinner()
-
-        val adapter = RestaurantsAdapter()
+        val adapter = RestaurantsAdapter(this)
         binding.rvRestaurants.adapter = adapter
 
         //get Restaurants data
         restaurantsViewModel.getRestaurantsData()
 
         restaurantsViewModel.restaurants.observe(viewLifecycleOwner, Observer {
+            adapter.setRestaurantsList(it)
             adapter.submitList(it)
         })
-    }
 
-    private fun setUpFilterSpinner() {
-        context?.let {
-            ArrayAdapter.createFromResource(
-                it,
-                R.array.filter_options_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                binding.filterSpinner.adapter = adapter
+        //set up search
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
             }
-        }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     //enable options menu in this fragment
@@ -68,6 +74,58 @@ class RestaurantsFragment: Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)
+
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_sort) {
+            showPopup()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showPopup() {
+        activity?.let {
+            val popup = PopupMenu(context!!, activity?.findViewById(R.id.action_sort)!!)
+            val inflater = popup.menuInflater
+            inflater.inflate(R.menu.actions, popup.menu)
+            popup.setOnMenuItemClickListener(this)
+            popup.show()
+        }
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_best_match -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_BEST_MATCH
+            )
+            R.id.action_sort_newest -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_NEWEST
+            )
+            R.id.action_sort_rating_average -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_RATING_AVERAGE
+            )
+            R.id.action_sort_distance -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_DISTANCE
+            )
+            R.id.action_sort_popularity -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_POPULARITY
+            )
+            R.id.action_sort_product_price -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_AVERAGE_PRODUCT_PRICE
+            )
+            R.id.action_sort_delivery_cost -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_DELIVERY_COST
+            )
+            R.id.action_sort_min_cost -> restaurantsViewModel.getRestaurantsDataBySelectionType(
+                SORT_BY_MIN_COST
+            )
+        }
+        return false
+    }
+
+    override fun onItemClick(restaurantName: String, isFavorite: Boolean) {
+        restaurantsViewModel.addToFavorites(restaurantName, isFavorite)
     }
 }

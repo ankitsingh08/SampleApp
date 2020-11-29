@@ -10,4 +10,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface RestaurantsRepository {
     suspend fun getRestaurants(): Flow<UIResponseState<List<RestaurantDomainModel>>>
+    suspend fun addToFavorites(restaurantName: String, isFavorite: Boolean): Flow<UIResponseState<List<RestaurantDomainModel>>>
+    suspend fun getSortedRestaurantsList(sortBy: String): Flow<UIResponseState<List<RestaurantDomainModel>>>
 }

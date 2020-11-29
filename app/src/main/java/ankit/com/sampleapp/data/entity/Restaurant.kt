@@ -1,17 +1,26 @@
 package ankit.com.sampleapp.data.entity
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import ankit.com.sampleapp.domain.model.RestaurantDomainModel
+import ankit.com.sampleapp.util.Constants.EMPTY_STRING
 
+@Entity(tableName = "restaurants")
 data class Restaurant(
+    @Embedded
     val sortingValues: SortingValues,
-    val name: String = "",
-    val status: String = ""
+    @PrimaryKey
+    val name: String = EMPTY_STRING,
+    val status: Status,
+    val favorite: Boolean
 )
 
-internal fun Restaurant.toDomainModel(): RestaurantDomainModel {
+fun Restaurant.toDomainModel(): RestaurantDomainModel {
     return RestaurantDomainModel(
         sortingValues = this.sortingValues.toDomainModel(),
         name = this.name,
-        status = this.status
+        status = this.status.value,
+        favorite = this.favorite
     )
 }
