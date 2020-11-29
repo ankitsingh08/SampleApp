@@ -43,7 +43,7 @@ class RestaurantsViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.openMocks(this)
-        viewModel = RestaurantsViewModel(restaurantsUseCase)
+        //viewModel = RestaurantsViewModel(restaurantsUseCase)
         Dispatchers.setMain(testCoroutineDispatcher)
     }
 

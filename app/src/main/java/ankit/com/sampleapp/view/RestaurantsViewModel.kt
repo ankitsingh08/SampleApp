@@ -9,6 +9,7 @@ import ankit.com.sampleapp.domain.model.RestaurantDomainModel
 import ankit.com.sampleapp.domain.usecase.AddToFavoritesUseCase
 import ankit.com.sampleapp.domain.usecase.FilterRestaurantsUseCase
 import ankit.com.sampleapp.domain.usecase.GetRestaurantsUseCase
+import ankit.com.sampleapp.util.Constants.SORT_BY_BEST_MATCH
 import ankit.com.sampleapp.util.successOr
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -22,10 +23,13 @@ class RestaurantsViewModel @ViewModelInject constructor(
     private val addToFavoritesUseCase: AddToFavoritesUseCase,
     private val filterRestaurantsUseCase: FilterRestaurantsUseCase
 ) : ViewModel() {
+
     private val _restaurants = MutableLiveData<List<RestaurantDomainModel>>()
     val restaurants: LiveData<List<RestaurantDomainModel>> = _restaurants
-    private val _isError = MutableLiveData<Boolean>()
-    val isError: LiveData<Boolean> = _isError
+    private val _sortByCategoryName = MutableLiveData<String>()
+    val sortByCategoryName: LiveData<String> = _sortByCategoryName
+    private val _sortByCategoryValue = MutableLiveData<Any>()
+    val sortByCategoryValue: LiveData<Any> = _sortByCategoryValue
 
     fun getRestaurantsData() {
         viewModelScope.launch {
@@ -53,5 +57,13 @@ class RestaurantsViewModel @ViewModelInject constructor(
                 .map { it.successOr(emptyList()) }
                 .collect { _restaurants.value = it }
         }
+    }
+
+    fun setCategoryNameAndValue(sortBy: String) {
+        _sortByCategoryName.value = sortBy
+        when(sortBy) {
+            //SORT_BY_BEST_MATCH -> _sortByCategoryValue.value =
+        }
+
     }
 }

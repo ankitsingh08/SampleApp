@@ -1,13 +1,14 @@
 package ankit.com.sampleapp.data.local
 
 import android.content.Context
+import ankit.com.sampleapp.util.Constants.EMPTY_STRING
+import ankit.com.sampleapp.util.Constants.RESTAURANTS_DATA_FILE
 import java.io.IOException
 import javax.inject.Inject
 
 /**
  * Created by AnkitSingh on 11/25/20.
  */
-const val RESTAURANTS_DATA_FILE = "restaurants_data.json"
 class RestaurantsInformationAPI @Inject constructor(private val context: Context) {
 
     fun fetchRestaurantsInformation(): String {
@@ -20,7 +21,7 @@ class RestaurantsInformationAPI @Inject constructor(private val context: Context
             json = String(buffer)
         } catch (ioException: IOException) {
             ioException.printStackTrace()
-            return ""
+            return EMPTY_STRING
         }
         return json
     }

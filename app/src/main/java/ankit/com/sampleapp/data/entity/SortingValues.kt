@@ -20,7 +20,7 @@ internal fun SortingValues.toDomainModel() = SortingValuesDomainModel(
     distance = this.distance,
     deliveryCosts = this.deliveryCosts,
     popularity = this.popularity,
-    newest = this.popularity,
+    newest = this.newest,
     minCost = this.minCost,
     ratingAverage = this.ratingAverage
 )

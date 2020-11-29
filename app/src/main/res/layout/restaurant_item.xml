@@ -67,7 +67,7 @@
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
                 android:textSize="@dimen/sp20"
-
+                android:text=""
                 tools:text="Sorted by type"/>
 
             <TextView

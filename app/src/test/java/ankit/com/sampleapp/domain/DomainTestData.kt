@@ -1,5 +1,8 @@
 package ankit.com.sampleapp.domain
 
+import ankit.com.sampleapp.data.entity.Restaurant
+import ankit.com.sampleapp.data.entity.SortingValues
+import ankit.com.sampleapp.data.entity.Status
 import ankit.com.sampleapp.domain.model.RestaurantDomainModel
 import ankit.com.sampleapp.domain.model.SortingValuesDomainModel
 
@@ -18,4 +21,31 @@ internal fun getRestaurantsDummyData(): List<RestaurantDomainModel> {
         restaurantList.add(restaurant2)
         return restaurantList
     }
+
+internal fun getRestaurantsFilteredDummyData(): List<RestaurantDomainModel> {
+        val sortingValues1 = SortingValuesDomainModel(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        val restaurant1 = RestaurantDomainModel(sortingValues1, "Tanoshii Sushi", "order ahead")
+        val sortingValues2 = SortingValuesDomainModel(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        val restaurant2 = RestaurantDomainModel(sortingValues2, "Royal Thai", "open")
+        val restaurantList = mutableListOf<RestaurantDomainModel>()
+        restaurantList.add(restaurant1)
+        restaurantList.add(restaurant2)
+        return restaurantList
+        }
+
+internal fun getRestaurantsWithFavoritesDummyData(): List<RestaurantDomainModel> {
+        val sortingValues1 = SortingValuesDomainModel(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        val restaurant1 = RestaurantDomainModel(sortingValues1, "De Amsterdamsche Tram", "order ahead", true)
+        val sortingValues2 = SortingValuesDomainModel(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        val restaurant2 = RestaurantDomainModel(sortingValues2, "Royal Thai", "open", false)
+        val restaurantList = mutableListOf<RestaurantDomainModel>()
+        restaurantList.add(restaurant1)
+        restaurantList.add(restaurant2)
+        return restaurantList
+        }
+
+internal fun getRestaurantData(): Restaurant {
+        val sortingValues = SortingValues(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        return Restaurant(sortingValues, "De Amsterdamsche Tram", Status.OPEN, true)
+}
 }
