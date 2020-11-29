@@ -94,4 +94,34 @@ class RestaurantsViewModelTest {
 
         viewModel.restaurants.removeObserver(restaurantsListObserver)
     }
+
+    @Test
+    fun `add to favorites add restaurant successfully and returns success response`() = testCoroutineScope.runBlockingTest {
+        val testData = DomainTestData.getRestaurantsWithFavoritesDummyData()
+        val testRestaurantName = "De Amsterdamsche Tram"
+        whenever(addToFavoritesUseCase.execute(testRestaurantName, true)).thenReturn(flowOf(UIResponseState.Success(testData)))
+
+        viewModel.addToFavorites(testRestaurantName, true)
+        viewModel.restaurants.observeForever(restaurantsListObserver)
+
+        verify(addToFavoritesUseCase).execute(testRestaurantName, true)
+        verify(restaurantsListObserver).onChanged(testData)
+
+        viewModel.restaurants.removeObserver(restaurantsListObserver)
+    }
+
+    @Test
+    fun `add to favorites returns Error response`() = testCoroutineScope.runBlockingTest {
+        val testRestaurantName = "De Amsterdamsche Tram"
+        val exception = Exception()
+        whenever(addToFavoritesUseCase.execute(testRestaurantName, true)).thenReturn(flowOf(UIResponseState.Error(exception)))
+
+        viewModel.addToFavorites(testRestaurantName, true)
+        viewModel.restaurants.observeForever(restaurantsListObserver)
+
+        verify(addToFavoritesUseCase).execute(testRestaurantName, true)
+        verify(restaurantsListObserver).onChanged(emptyList())
+
+        viewModel.restaurants.removeObserver(restaurantsListObserver)
+    }
  }
