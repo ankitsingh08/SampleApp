@@ -1,5 +1,9 @@
 # SampleApp
-Case Assesment 
+
+Features Implemented
+- Display list of restaurants sorted by if that restaurant is favorite, its status and the type of sort selection selected by user.
+- Add or remove favorite restaurants
+- Search for restaurant using restaurant name
 
 # Project Characteristics 
 - 100% Kotlin<br />
