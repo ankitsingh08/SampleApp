@@ -1,6 +1,5 @@
 package ankit.com.sampleapp.data.entity
 
-import androidx.room.Entity
 import ankit.com.sampleapp.domain.model.SortingValuesDomainModel
 
 data class SortingValues(

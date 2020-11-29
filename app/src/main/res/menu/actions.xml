@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_best_match"
+        android:title="@string/best_match"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_newest"
+        android:title="@string/newest"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_rating_average"
+        android:title="@string/rating_average"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_distance"
+        android:title="@string/distance"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_popularity"
+        android:title="@string/popularity"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_product_price"
+        android:title="@string/average_product_price"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_delivery_cost"
+        android:title="@string/delivery_cost"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_sort_min_cost"
+        android:title="@string/min_cost"
+        app:showAsAction="never"/>
+
+</menu>
