@@ -26,11 +26,7 @@ class RestaurantsViewModel @ViewModelInject constructor(
 
     private val _restaurants = MutableLiveData<List<RestaurantDomainModel>>()
     val restaurants: LiveData<List<RestaurantDomainModel>> = _restaurants
-    private val _sortByCategoryName = MutableLiveData<String>()
-    val sortByCategoryName: LiveData<String> = _sortByCategoryName
-    private val _sortByCategoryValue = MutableLiveData<Any>()
-    val sortByCategoryValue: LiveData<Any> = _sortByCategoryValue
-
+    
     fun getRestaurantsData() {
         viewModelScope.launch {
             restaurantsUseCase.execute()
