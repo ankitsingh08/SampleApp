@@ -31,6 +31,7 @@ Unit test cases are included for the following:
 - Architecture Components(LiveData, ViewModel, Room)<br />
 - GSON for parsing<br />
 - Navigation<br />
+- Extension Functions
 - Unit Testing(Junit, Mockito)<br />
 
 # App Architecture Details:
