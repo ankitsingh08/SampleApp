@@ -15,7 +15,7 @@ class RestaurantDomainModelTest {
 
     @Test
     fun `model has default favorite as false`() {
-        val testSortingValuesDomainModel = SortingValuesDomainModel(0, 96, 45, 272, 873,282,2828,4.5 )
+        val testSortingValuesDomainModel = SortingValuesDomainModel(0.0, 96.0, 45.0, 272.0, 873.0,282.0,2828.0,4.5 )
         restaurantDomainModel = RestaurantDomainModel(testSortingValuesDomainModel, "Royal Thai", "open")
 
         assertFalse(restaurantDomainModel.favorite)

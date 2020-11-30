@@ -64,7 +64,7 @@ class RestaurantsViewModelTest {
     @Test
     fun `get restaurants usecase returns list of restaurants success scenario`() = testCoroutineScope.runBlockingTest {
         // when
-        val testData = DomainTestData.getRestaurantsDummyData()
+        val testData = DomainTestData.getRestaurantsDomainData()
         whenever(restaurantsUseCase.execute()).thenReturn(flowOf(UIResponseState.Success(testData)))
 
         viewModel.getRestaurantsData()

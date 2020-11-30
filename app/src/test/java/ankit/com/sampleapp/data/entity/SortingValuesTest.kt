@@ -14,10 +14,10 @@ import org.junit.runners.JUnit4
 class SortingValuesTest {
     @Test
     fun `data model SortingValues maps to SortingValuesDomainModel`() {
-        val sortingValues = SortingValues(1536, 96, 1190, 200, 17, 96, 1000, 4.5)
+        val sortingValues = SortingValues(1536.0, 96.0, 1190.0, 200.0, 17.0, 96.0, 1000.0, 4.5)
 
         val sortingValuesDomainModel = sortingValues.toDomainModel()
 
-        assertEquals(sortingValuesDomainModel, SortingValuesDomainModel(1536, 96, 1190, 200, 17, 96, 1000, 4.5))
+        assertEquals(sortingValuesDomainModel, SortingValuesDomainModel(1536.0, 96.0, 1190.0, 200.0, 17.0, 96.0, 1000.0, 4.5))
     }
 }

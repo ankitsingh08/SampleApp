@@ -46,7 +46,7 @@ class GetRestaurantsUseCaseTest{
 
     @Test
     fun  `repository returns list of restaurants success scenario`()  = testCoroutineScope.runBlockingTest{
-        val expectedResult =  flowOf(UIResponseState.Success(DomainTestData.getRestaurantsDummyData()))
+        val expectedResult =  flowOf(UIResponseState.Success(DomainTestData.getRestaurantsDomainData()))
         whenever(restaurantsRepository.getRestaurants()).thenReturn(expectedResult)
 
         val result = testCase.execute()
