@@ -5,15 +5,6 @@ package ankit.com.sampleapp.util
  */
 
 object Constants {
-    const val DEFAULT = 0
-    const val BEST_MATCH = 1
-    const val NEWEST = 2
-    const val RATING_AVERAGE = 3
-    const val DISTANCE = 4
-    const val POPULARITY = 5
-    const val AVERAGE_PRODUCT_PRICE = 6
-    const val DELIVERY_COST = 7
-    const val MIN_COST = 8
     const val SORT_BY_BEST_MATCH = "bestMatch"
     const val SORT_BY_NEWEST = "newest"
     const val SORT_BY_RATING_AVERAGE= "ratingAverage"

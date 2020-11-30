@@ -7,6 +7,10 @@
         <variable
             name="restaurant"
             type="ankit.com.sampleapp.domain.model.RestaurantDomainModel" />
+
+        <variable
+            name="sortBy"
+            type="String" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -52,11 +56,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
-                android:text="@{restaurant.status}"
-                android:textSize="@dimen/sp20"
+                android:text="@string/status"
+                android:textSize="@dimen/sp16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"
                 tools:text="Open" />
+
+            <TextView
+                android:id="@+id/tv_state_val"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginEnd="@dimen/dp16"
+                android:text="@{restaurant.status}"
+                android:textSize="@dimen/sp16"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toRightOf="@+id/tv_state"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:text="open" />
 
             <TextView
                 android:id="@+id/tv_sort"
@@ -66,20 +83,48 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_state"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
-                android:textSize="@dimen/sp20"
-                android:text=""
+                android:textSize="@dimen/sp16"
+                android:text="@string/sort_type"
                 tools:text="Sorted by type"/>
 
             <TextView
-                android:id="@+id/tv_sort_value"
+                android:id="@+id/tv_sort_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/tv_sort"
+                app:layout_constraintTop_toBottomOf="@+id/tv_state"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginEnd="@dimen/dp16"
+                android:textSize="@dimen/sp16"
+                android:textStyle="italic"
+                android:text="@{sortBy}"
+                tools:text="Best match"/>
+
+            <TextView
+                android:id="@+id/tv_sorted_val_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sort"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
-                android:textSize="@dimen/sp20"
-                tools:text="Sort Value"/>
+                android:textSize="@dimen/sp16"
+                android:text="@{sortBy}"
+                android:capitalize="words"
+                tools:text="Sorted Value"/>
+
+            <TextView
+                android:id="@+id/tv_sorted_val"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sort"
+                app:layout_constraintLeft_toRightOf="@+id/tv_sorted_val_title"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginEnd="@dimen/dp16"
+                android:textStyle="italic"
+                android:textSize="@dimen/sp16"
+                android:text="@{restaurant.sortingValues.getValueForKey(sortBy)}"
+                tools:text="0.0"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

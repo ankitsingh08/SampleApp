@@ -3,13 +3,13 @@ package ankit.com.sampleapp.data.entity
 import ankit.com.sampleapp.domain.model.SortingValuesDomainModel
 
 data class SortingValues(
-    val averageProductPrice: Int = 0,
-    val bestMatch: Int = 0,
-    val distance: Int = 0,
-    val deliveryCosts: Int = 0,
-    val popularity: Int = 0,
-    val newest: Int = 0,
-    val minCost: Int = 0,
+    val averageProductPrice: Double = 0.0,
+    val bestMatch: Double = 0.0,
+    val distance: Double = 0.0,
+    val deliveryCosts: Double = 0.0,
+    val popularity: Double = 0.0,
+    val newest: Double = 0.0,
+    val minCost: Double = 0.0,
     val ratingAverage: Double = 0.0
 )
 

@@ -11,4 +11,7 @@
     <string name="average_product_price">Average Product Price</string>
     <string name="delivery_cost">Delivery Cost</string>
     <string name="min_cost">Min Cost</string>
+    <string name="sorted_value">Sorted Value:</string>
+    <string name="sort_type">Sort Type:</string>
+    <string name="status">Status:</string>
 </resources>

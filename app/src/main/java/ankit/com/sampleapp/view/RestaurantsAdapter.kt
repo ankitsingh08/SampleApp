@@ -21,6 +21,7 @@ class RestaurantsAdapter (val listener: OnClickHandler):
     Filterable {
 
     private lateinit var restaurantsList: List<RestaurantDomainModel>
+    private lateinit var sortBy: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return RestaurantsViewHolder(
@@ -33,19 +34,21 @@ class RestaurantsAdapter (val listener: OnClickHandler):
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val restaurant = getItem(position)
-        (holder as RestaurantsViewHolder).bind(listener, restaurant)
+        (holder as RestaurantsViewHolder).bind(listener, restaurant, sortBy)
     }
 
-    fun setRestaurantsList(list: List<RestaurantDomainModel>) {
+    fun setRestaurantsList(list: List<RestaurantDomainModel>, sortBy: String) {
         this.restaurantsList = list
+        this.sortBy = sortBy
         notifyDataSetChanged()
     }
 
     class RestaurantsViewHolder(private val binding: RestaurantItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(listener: OnClickHandler, item: RestaurantDomainModel) {
+        fun bind(listener: OnClickHandler, item: RestaurantDomainModel, sortBy: String) {
             binding.apply {
                 restaurant = item
+                this.sortBy = sortBy
                 executePendingBindings()
             }
 

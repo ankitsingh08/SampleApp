@@ -29,6 +29,8 @@ class RestaurantsFragment : Fragment(), PopupMenu.OnMenuItemClickListener,
 
     private lateinit var binding: RestaurantsFragmentBinding
 
+    private var sortBy = SORT_BY_BEST_MATCH
+
     private val restaurantsViewModel: RestaurantsViewModel by viewModels()
 
     override fun onCreateView(
@@ -49,7 +51,7 @@ class RestaurantsFragment : Fragment(), PopupMenu.OnMenuItemClickListener,
         restaurantsViewModel.getRestaurantsData()
 
         restaurantsViewModel.restaurants.observe(viewLifecycleOwner, Observer {
-            adapter.setRestaurantsList(it)
+            adapter.setRestaurantsList(it, sortBy)
             adapter.submitList(it)
         })
 
@@ -96,32 +98,18 @@ class RestaurantsFragment : Fragment(), PopupMenu.OnMenuItemClickListener,
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.action_best_match -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_BEST_MATCH
-            )
-            R.id.action_sort_newest -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_NEWEST
-            )
-            R.id.action_sort_rating_average -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_RATING_AVERAGE
-            )
-            R.id.action_sort_distance -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_DISTANCE
-            )
-            R.id.action_sort_popularity -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_POPULARITY
-            )
-            R.id.action_sort_product_price -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_AVERAGE_PRODUCT_PRICE
-            )
-            R.id.action_sort_delivery_cost -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_DELIVERY_COST
-            )
-            R.id.action_sort_min_cost -> restaurantsViewModel.getRestaurantsDataBySelectionType(
-                SORT_BY_MIN_COST
-            )
+        sortBy = when (item?.itemId) {
+            R.id.action_best_match -> SORT_BY_BEST_MATCH
+            R.id.action_sort_newest -> SORT_BY_NEWEST
+            R.id.action_sort_rating_average -> SORT_BY_RATING_AVERAGE
+            R.id.action_sort_distance -> SORT_BY_DISTANCE
+            R.id.action_sort_popularity -> SORT_BY_POPULARITY
+            R.id.action_sort_product_price -> SORT_BY_AVERAGE_PRODUCT_PRICE
+            R.id.action_sort_delivery_cost -> SORT_BY_DELIVERY_COST
+            R.id.action_sort_min_cost -> SORT_BY_MIN_COST
+            else -> SORT_BY_BEST_MATCH
         }
+        restaurantsViewModel.getRestaurantsDataBySelectionType(sortBy)
         return false
     }
 
