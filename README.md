@@ -35,7 +35,8 @@ Unit test cases are included for the following:
 - Unit Testing(Junit, Mockito)<br />
 
 # App Architecture Details:
-![app_architecture](https://user-images.githubusercontent.com/16702310/100535703-446bf980-31e9-11eb-8c17-ffb6982e2cd5.png)
+![Untitled Diagram](https://user-images.githubusercontent.com/16702310/100569586-7d18db00-329c-11eb-9cba-640b35c88034.png)
+
  # View
  This layer mainly deals with the UI of the application.
  
