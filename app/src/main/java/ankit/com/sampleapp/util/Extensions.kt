@@ -42,3 +42,7 @@ fun List<Restaurant>.sortByFavStatusAndSelectedSortTypeByDescending(sortBy: Stri
                 }
             })
 }
+
+fun capitalizeFirst(text: String): String {
+    return text.capitalize()
+}

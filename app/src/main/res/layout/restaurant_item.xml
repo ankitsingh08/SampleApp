@@ -8,6 +8,10 @@
             name="restaurant"
             type="ankit.com.sampleapp.domain.model.RestaurantDomainModel" />
 
+        <import
+            alias="ExtensionFunctions"
+            type="ankit.com.sampleapp.util.ExtensionsKt" />
+
         <variable
             name="sortBy"
             type="String" />
@@ -109,8 +113,8 @@
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginEnd="@dimen/dp16"
                 android:textSize="@dimen/sp16"
-                android:text="@{sortBy}"
-                android:capitalize="words"
+                android:text="@{ExtensionFunctions.capitalizeFirst(sortBy)}"
+                android:inputType="textCapWords"
                 tools:text="Sorted Value"/>
 
             <TextView
