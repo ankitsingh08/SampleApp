@@ -58,12 +58,4 @@ class RestaurantsViewModel @ViewModelInject constructor(
                 .collect { _restaurants.value = it }
         }
     }
-
-    fun setCategoryNameAndValue(sortBy: String) {
-        _sortByCategoryName.value = sortBy
-        when(sortBy) {
-            //SORT_BY_BEST_MATCH -> _sortByCategoryValue.value =
-        }
-
-    }
 }
