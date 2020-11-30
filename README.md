@@ -5,7 +5,7 @@ Features Implemented
 - Add or remove favorite restaurants
 - Search for restaurant using restaurant name
 
-# Assumptions while sorting restaurant list
+# Assumptions
 - Restaurant added to favorite is always on top(sorted by status open, order ahead and close) if there are favorites from different statuses
 - Restaurants are always sorted by status ie open followed by order ahead followed bu closed restaurants(this sort always applicable irrespective of the independent sort type)
 - Rating average and Popularity of restaurants are always in descending order(restaurant with average rating/popularity higher are shown before restaurants with lower values)
@@ -59,4 +59,10 @@ Unit test cases are included for the following:
  - **Mapper** : Used to map data models to domains models to keep domain independent of data layer.
  - **Database** : Used for saving local data (in current project favorite restaurants)
  - **DataModel** : Structure for data retrieved from remote/local data source. 
+ 
+ # Screenshots
+ <img src="https://user-images.githubusercontent.com/16702310/100568081-26a99d80-3298-11eb-9ce7-f49f557140ba.png" width="30%">  <img src="https://user-images.githubusercontent.com/16702310/100568099-332df600-3298-11eb-8f17-9efe9abf9f36.png" width="30%">  <img src="https://user-images.githubusercontent.com/16702310/100568127-493bb680-3298-11eb-97dc-c3bf75d1e0f3.png" width="30%">
+ <img src="https://user-images.githubusercontent.com/16702310/100568145-59539600-3298-11eb-907d-4d917f4a8cbf.png" width="30%">
+ <img src="https://user-images.githubusercontent.com/16702310/100568246-b3545b80-3298-11eb-8c9b-1513be5b6df1.png" width="30%">
+ 
  
